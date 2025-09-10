@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "Bricolage-Grotesque";
+    src: url("../fonts/BricolageGrotesque-Bold.woff2"); format('woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../fonts/DMSans-Bold.woff2"); format('woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../fonts/DMSans-Light.woff2"); format('woff2');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../fonts/DMSans-Medium.woff2"); format('woff2');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../fonts/DMSans-SemiBold.woff2"); format('woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../fonts/DMSans-SemiBoldItalic.woff2"); format('woff2');
+    font-weight: 600;
+    font-style: italic;
+}
