@@ -1,0 +1,29 @@
+/* Кнопки */
+button {
+    all: unset; /* знімає всі дефолтні стилі */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Інпути */
+input, textarea, select {
+    all: unset; /* повністю прибирає стилі браузера */
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Щоб курсор у текстових полях був нормальний */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    cursor: text;
+}
+
+/* Прибирає сині рамки при кліку (можна замінити на свої стилі) */
+:focus {
+    outline: none;
+}
