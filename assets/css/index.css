@@ -1,1 +1,94 @@
 /*стилі для головної*/
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+body{
+    background-color: var(--neutral-900);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 48px 110px 0 110px;
+    width: 1200px;
+    height: 44px;
+}
+.header_logo{
+    height: 40px;
+    width: 200px;
+    background: url("../images/logo.svg") no-repeat;
+}
+.header_units{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    font-size: 18px;
+    border-radius: 12px;
+    color:white;
+    background-image:  url("../images/icon-units.svg");
+    background-position: 16px 13px;
+    background-repeat:no-repeat;
+    background-color:var(--neutral-700) ;
+}
+
+.title{
+color: white;
+    text-align: center;
+    font-family: "Bricolage-Grotesque";
+    font-weight: 700 ;
+    font-size: 52px;
+    margin: 64px 0;
+}
+.content_search{
+    display: flex;
+    justify-content: center;
+    width: 660px;
+    height: 60px;
+}
+.content_search-input{
+    border-radius: 12px;
+    font-size: 18px;
+    height: 40px;
+    width: 400px;
+    padding: 16px 0 16px 60px;
+    color: var(--neutral-200);
+    background-color: var(--neutral-800);
+    background-image: url("../images/icon-search.svg");
+    background-repeat: no-repeat;
+    background-position:  16px center;
+}
+.content_search-input:focus{
+    outline: none;
+    box-shadow: 0 0 0 2px var(--neutral-900),
+    0 0 0 4px white;
+}
+.content_search-input::placeholder{
+    color: var(--neutral-200);
+    font-size: 16px;
+    font-family: "DMSans";
+}
+.content_search-btn{
+    font-size: 20px;
+    font-family: "DMSans";
+    height: 40px;
+    width: 120px;
+    border-radius: 12px;
+    background-color: var(--blue-500);
+    color: white;
+    margin-left: 16px;
+}
+.content_search-btn:hover{
+    background-color: var(--blue-700);
+}
+.content_search-btn:active{
+    background-color: var(--blue-500);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--neutral-900),
+    0 0 0 4px var(--blue-500);
+}
+.content{
+    margin: 0 auto;
+    max-width: 800px;
+    height: 1200px;
+}

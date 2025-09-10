@@ -1,4 +1,18 @@
 /*базові стилі*/
+@import "reset.css";
 @import "fonts.css";
 @import "index.css";
 @import "layout.css";
+
+body{
+    --neutral-900:#02012C;
+    --neutral-800:#262540;
+    --neutral-700:#302F4A;
+    --neutral-600:#3C3B5E;
+    --neutral-300:#ACACB7;
+    --neutral-200:#D4D3D9;
+    --neutral-0:#FFFFFF;
+    --orange:#FF820A;
+    --blue-500:#4658D9;
+    --blue-700:#2B1B9C;
+}
