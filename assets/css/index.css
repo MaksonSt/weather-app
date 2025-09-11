@@ -8,49 +8,71 @@ body{
 }
 .header{
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin: 48px 110px 0 110px;
-    width: 1200px;
-    height: 44px;
+    min-width: 270px;
+    max-height: 44px;
+    margin: 16px;
 }
+
 .header_logo{
-    height: 40px;
-    width: 200px;
-    background: url("../images/logo.svg") no-repeat;
+    height: 24px;
+    width: 120px;
+    background-image: url("../images/logo.svg") ;
+    background-repeat:  no-repeat;
+    background-size: cover;
+    /*background-position: center;*/
+
 }
 .header_units{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120px;
+    min-width: 90px;
+    min-height: 33px;
     font-size: 18px;
     border-radius: 12px;
     color:white;
     background-image:  url("../images/icon-units.svg");
-    background-position: 16px 13px;
+    background-position: 8px center;
     background-repeat:no-repeat;
     background-color:var(--neutral-700) ;
 }
 
 .title{
-color: white;
+    max-width: 330px    ;
+    color: white;
     text-align: center;
     font-family: "Bricolage-Grotesque";
     font-weight: 700 ;
     font-size: 52px;
-    margin: 64px 0;
+    margin: 64px auto;
+}
+@media (min-width: 769px) {
+.title{
+    min-width: 480px;
+}
+    @media (min-width: 1441px) {
+        .title {
+            min-width: 780px;
+        }
+    }
 }
 .content_search{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 660px;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 340px;
     height: 60px;
 }
 .content_search-input{
     border-radius: 12px;
     font-size: 18px;
-    height: 40px;
-    width: 400px;
+    min-height: 56px;
+    min-width: 340px;
+    margin-bottom: 1rem;
     padding: 16px 0 16px 60px;
     color: var(--neutral-200);
     background-color: var(--neutral-800);
@@ -71,12 +93,11 @@ color: white;
 .content_search-btn{
     font-size: 20px;
     font-family: "DMSans";
-    height: 40px;
-    width: 120px;
+    min-height: 56px;
+    min-width: 340px;
     border-radius: 12px;
     background-color: var(--blue-500);
     color: white;
-    margin-left: 16px;
 }
 .content_search-btn:hover{
     background-color: var(--blue-700);
