@@ -67,6 +67,7 @@ body{
     max-width: 340px;
     height: 60px;
 }
+
 .content_search-input{
     border-radius: 12px;
     font-size: 18px;
@@ -107,6 +108,20 @@ body{
     outline: none;
     box-shadow: 0 0 0 3px var(--neutral-900),
     0 0 0 4px var(--blue-500);
+}
+@media (min-width: 769px) {
+    .content_search{
+        flex-direction:row;
+
+    }
+    .content_search-input{
+        margin: 0 ;
+        min-width: 570px;
+    }
+    .content_search-btn{
+        margin-left: 1rem;
+        min-width:120px;
+    }
 }
 .content{
     margin: 0 auto;
