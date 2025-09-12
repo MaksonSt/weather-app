@@ -21,7 +21,6 @@ body{
     background-image: url("../images/logo.svg") ;
     background-repeat:  no-repeat;
     background-size: cover;
-    /*background-position: center;*/
 
 }
 .header_units{
@@ -57,6 +56,11 @@ body{
             min-width: 780px;
         }
     }
+}
+.content{
+    margin: 0 auto;
+    max-width: 800px;
+    height: 1200px;
 }
 .content_search{
     display: flex;
@@ -109,7 +113,7 @@ body{
     box-shadow: 0 0 0 3px var(--neutral-900),
     0 0 0 4px var(--blue-500);
 }
-@media (min-width: 769px) {
+@media (min-width: 810px) {
     .content_search{
         flex-direction:row;
 
@@ -123,8 +127,55 @@ body{
         min-width:120px;
     }
 }
-.content{
+.content_main{
+    background: url("../images/bg-today-small.svg") no-repeat center;
+    height: 290px;
+    margin-top:60px;
+}
+@media (min-width: 810px){
+    .content_main{
+        background: url("../images/bg-today-large.svg") no-repeat center;
+        height: 340px;
+        margin-top: 0;
+    }
+}
+.content_city{
+    width: 200px;
+    padding-top: 32px;
+    color: white;
     margin: 0 auto;
-    max-width: 800px;
-    height: 1200px;
+    text-align:  center;
+    font-family:  "DMSans";
+    font-weight:  bold;
+    font-size: 28px;
+}
+.content_date{
+    width: 180px;
+    padding-top: 12px;
+    color: white;
+    opacity: 80%;
+    font-family:  "DMSans";
+    font-weight: 500;
+    font-size: 0.875em;
+    margin: 0 auto;
+    text-align:  center;
+}
+.content_info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content_info-img{
+    background: url("../images/icon-sunny.webp") no-repeat center ;
+    background-size: cover;
+    width: 120px;
+    height: 120px;
+
+}
+.content_info-temperature{
+    color:  white;
+    font-family:  "DMSans";
+    font-weight: 600;
+    font-size:  96px;
+    font-style:   italic;
 }
