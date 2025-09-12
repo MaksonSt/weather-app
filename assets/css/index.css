@@ -21,7 +21,10 @@ body{
     background-image: url("../images/logo.svg") ;
     background-repeat:  no-repeat;
     background-size: cover;
-
+@media (min-width: 810px) {
+    height: 42px;
+    width: 220px;
+}
 }
 .header_units{
     display: flex;
@@ -120,7 +123,7 @@ body{
     }
     .content_search-input{
         margin: 0 ;
-        min-width: 570px;
+        min-width: 660px;
     }
     .content_search-btn{
         margin-left: 1rem;
@@ -156,7 +159,7 @@ body{
     opacity: 80%;
     font-family:  "DMSans";
     font-weight: 500;
-    font-size: 0.875em;
+    font-size: 0.925em;
     margin: 0 auto;
     text-align:  center;
 }
@@ -178,4 +181,26 @@ body{
     font-weight: 600;
     font-size:  96px;
     font-style:   italic;
+}
+@media (min-width: 810px) {
+    .content_main{
+        display: flex;
+        justify-content: space-between;
+        align-items:  center;
+        padding-right: 24px;
+    }
+    .content_city_date{
+        padding-bottom: 23px;
+        padding-left: 24px;
+    }
+    .content_city{
+        padding-top: 0;
+        text-align:  left;
+    }
+    .content_date{
+        padding-top: 0;
+        margin: 0;
+        text-align:  left;
+        padding-top: 12px;
+    }
 }
