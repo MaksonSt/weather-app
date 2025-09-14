@@ -1,4 +1,5 @@
 /*стилі для головної*/
+@import "fonts.css";
 input,button,textarea{font-family:inherit;}
 input::-ms-clear{display: none;}
 button{cursor: pointer;}
@@ -203,4 +204,84 @@ body{
         text-align:  left;
         padding-top: 12px;
     }
+}
+
+.content_daily_forecast-text{
+    color: white;
+    font-family:   "DMSans";
+    font-weight: 600;
+    margin: 1rem;
+}
+.content_daily_forecast-grid{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+.grid-item{
+    background-color: var(--neutral-700);
+    height: 160px;
+    min-width: 100px;
+    margin: 1rem;
+    border-radius: 12px;
+    border: 2px solid var(--neutral-600);
+}
+    .day{
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-family:  "DMSans";
+        font-weight: 500;
+        font-size: 20px;
+    }
+}
+.content_daily_forecast-grid-monday-img{
+    background:  url("../images/icon-rain.webp") no-repeat center ;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+}
+.content_forecast-grid-tuesday-img{
+     background:  url("../images/icon-sunny.webp") no-repeat center ;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+
+}
+.content_daily_forecast-grid-wednesday-img{
+    background:  url("../images/icon-partly-cloudy.webp") no-repeat center ;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+
+}
+.content_daily_forecast-grid-thursday-img{
+    background:  url("../images/icon-snow.webp") no-repeat center ;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+
+}
+.content_daily_forecast-grid-friday-img{
+ background:  url("../images/icon-rain.webp") no-repeat center ;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+}
+.content_daily_forecast-grid-saturday-img{
+ background:  url("../images/icon-drizzle.webp") no-repeat center ;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+}
+.content_daily_forecast-grid-sunday-img{
+ background:  url("../images/icon-fog.webp") no-repeat center ;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
 }
