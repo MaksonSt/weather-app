@@ -240,7 +240,7 @@ body{
     width: 60px;
     margin: 0 auto;
 }
-.content_forecast-grid-tuesday-img{
+.content_daily_forecast-grid-tuesday-img{
      background:  url("../images/icon-sunny.webp") no-repeat center ;
     background-size: cover;
     height: 60px;
@@ -284,4 +284,12 @@ body{
     height: 60px;
     width: 60px;
     margin: 0 auto;
+}
+.content_daily_forecast-temperature{
+    color:  white;
+    font-family:  "DMSans";
+    font-weight: 500;
+    display: flex;
+    justify-content:  space-between;
+    margin: -8px 0.5rem ;
 }
