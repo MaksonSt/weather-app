@@ -63,7 +63,7 @@ body{
 }
 .content{
     margin: 0 auto;
-    max-width: 800px;
+    m-width: 800px;
     height: 1200px;
 }
 .content_search{
@@ -134,6 +134,8 @@ body{
 .content_main{
     background: url("../images/bg-today-small.svg") no-repeat center;
     height: 290px;
+    margin: 0 auto;
+    max-width: 800px;
     margin-top:60px;
 }
 @media (min-width: 810px){
@@ -205,17 +207,6 @@ body{
         padding-top: 12px;
     }
 }
-
-.content_daily_forecast-text{
-    color: white;
-    font-family:   "DMSans";
-    font-weight: 600;
-    margin: 1rem;
-}
-.content_daily_forecast-grid{
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: auto;
 .grid-item{
     background-color: var(--neutral-700);
     height: 160px;
@@ -224,6 +215,47 @@ body{
     border-radius: 12px;
     border: 2px solid var(--neutral-600);
 }
+.content_other_info{
+    color: white;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+}
+@media (min-width: 810px){
+    .content_other_info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .content_other_info>.grid-item{
+        flex: 1;
+    }
+}
+.content_other_info-text{
+    font-family:  'DMSans';
+    font-weight: 500;
+    margin: 1.25rem;
+    font-size:  1.25em;
+    color: var(--neutral-200);
+}
+.numbers{
+    font-family:  'DMSans';
+    font-weight: 300;
+    font-size:2em;
+    margin: 1.25rem;
+}
+
+.content_daily_forecast-text{
+    color: white;
+    font-family: "DMSans";
+    font-weight: 600;
+    margin: 1rem;
+}
+.content_daily_forecast-grid{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+
     .day{
         color: white;
         text-align: center;
