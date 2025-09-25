@@ -5,7 +5,9 @@ input::-ms-clear{display: none;}
 button{cursor: pointer;}
 button::-moz-focus-inner {padding:0;border:0;}
 body{
+    color: white;
     background-color: var(--neutral-900);
+    font-family: "DMSans";
 }
 .header{
     display: flex;
@@ -22,10 +24,11 @@ body{
     background-image: url("../images/logo.svg") ;
     background-repeat:  no-repeat;
     background-size: cover;
+
+}
 @media (min-width: 810px) {
     height: 42px;
     width: 220px;
-}
 }
 .header_units{
     display: flex;
@@ -51,7 +54,7 @@ body{
     font-size: 52px;
     margin: 64px auto;
 }
-@media (min-width: 769px) {
+@media (min-width: 810px) {
 .title{
     min-width: 480px;
 }
@@ -63,8 +66,13 @@ body{
 }
 .content{
     margin: 0 auto;
-    m-width: 800px;
-    height: 1200px;
+    max-width: 800px;
+    min-height: 1200px;
+}
+@media (min-width: 810px) {
+    .content{
+        min-height:700px ;
+    }
 }
 .content_search{
     display: flex;
@@ -134,9 +142,8 @@ body{
 .content_main{
     background: url("../images/bg-today-small.svg") no-repeat center;
     height: 290px;
-    margin: 0 auto;
-    max-width: 800px;
-    margin-top:60px;
+    margin: 60px auto 0 auto;
+    max-width: 762px;
 }
 @media (min-width: 810px){
     .content_main{
@@ -346,4 +353,124 @@ body{
     display: flex;
     justify-content:  space-between;
     margin: -8px 0.5rem ;
+}
+.aside_content{
+    min-width: 778px;
+    margin: 0 auto;
+    max-width: 778px;
+}
+.hourly_forecast{
+    background-color: var(--neutral-800);
+    border-radius: 12px;
+    margin: 1rem;
+}
+.hourly_forecast-header{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.hourly_forecast-body{
+    padding-bottom: 1rem;
+}
+.days_form{
+    background-color:  var(--neutral-600);
+    font-family:   "DMSans";
+    font-weight: 500;
+    font-size: 0.875em;
+    min-width:  60px;
+    padding: 8px;
+    border-radius: 12px;
+}
+.hourly_forecast-body-header{
+    background-color:  var(--neutral-700);
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    border:   1px solid var(--neutral-600);
+    border-radius: 12px;
+    padding: 0 8px;
+    font-family:  'DMSans';
+
+}
+.pm_img_hour{
+    display:  flex;
+    justify-content: flex-start;
+    width: 84px;
+    align-items: center;
+}
+.pm-3_img{
+    background: url("../images/icon-rain.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+  }
+.pm-4_img{
+    background: url("../images/icon-snow.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+.pm-5_img{
+    background: url("../images/icon-drizzle.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+.pm-6_img{
+background: url("../images/icon-rain.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+.pm-7_img{
+background: url("../images/icon-fog.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+.pm-8_img{
+background: url("../images/icon-partly-cloudy.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+.pm-9_img{
+background: url("../images/icon-sunny.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+.pm-10_img{
+background: url("../images/icon-storm.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+.pm-11_img{
+background: url("../images/icon-overcast.webp") no-repeat center ;
+    background-size:  cover;
+    height: 37px;
+    width: 37px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column; /* мобілка: все в стопчик */
+
+}
+
+@media (min-width: 1100px) { /* ноут і вище */
+  .layout {
+    flex-direction: row;  /* main і aside поруч */
+    align-items: flex-start;
+  }
+
+  .content_main {
+    flex: 2; /* основа більша */
+  }
+
+  .aside_content {
+    flex: 2; /* збоку менша колонка */
+      margin-top:0rem;
+  }
 }
