@@ -89,7 +89,7 @@ body{
     border-radius: 12px;
     font-size: 18px;
     min-height: 56px;
-    min-width: 340px;
+    max-width: 340px;
     margin-bottom: 1rem;
     padding: 16px 0 16px 60px;
     color: var(--neutral-200);
@@ -125,8 +125,8 @@ body{
     0 0 0 4px var(--blue-500);
 }
 @media (min-width: 769px) {
-    .content_search{
-        flex-direction:row;
+    .search_city{
+        display: flex;
     }
     .content_search-input{
         margin: 0 ;

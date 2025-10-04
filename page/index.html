@@ -15,10 +15,10 @@
 <main class="content_form">
     <h1 class="title">How’s the sky looking today?</h1>
     <div class="content_search">
-        <form>
-            <input class="content_search-input" type="text" placeholder="Search for a place..." aria-label="Search place">
+        <form class="search_city" autocomplete="off">
+            <input class="content_search-input" type="text" placeholder="Search for a place..." aria-label="Search place" name="input_city">
+        <button class="content_search-btn" type="submit" >Search</button>
         </form>
-        <button class="content_search-btn" >Search</button>
     </div>
 </main>
   <div class="layout">
@@ -44,11 +44,11 @@
         </div>
         <div class="content_other_info_wind grid-item">
             <div class="content_other_info-text">Wind</div>
-            <div class="numbers wind">1 km/h</div>
+            <div class="numbers wind"></div>
         </div>
         <div class="content_other_info_precipitation grid-item">
             <div class="content_other_info-text">Precipitation</div>
-            <div class="numbers precipitation">0 mm</div>
+            <div class="numbers precipitation"></div>
         </div>
     </section>
     <section class="content_daily_forecast">
@@ -197,7 +197,7 @@
     </div>
     </aside>
 </div>
-<script src="../assets/js/common.js"></script>
-<script src="../assets/js/weather.js"></script>
+<script type="module" src="../assets/js/common.js"></script>
+<script type="module" src="../assets/js/weather.js"></script>
 </body>
 </html>
