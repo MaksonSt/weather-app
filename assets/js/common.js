@@ -35,3 +35,13 @@ export async function getCity(cityName) {
         } else {
         }
     });
+const day_week=document.querySelectorAll(".day")
+function setDayWeek(){
+    const week=["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const todayIndex=new Date().getDay()
+    day_week.forEach((day,i) => {
+        const nextDay = (todayIndex + i) % 7;
+        day.innerText=week[nextDay]
+    })
+}
+setDayWeek();
