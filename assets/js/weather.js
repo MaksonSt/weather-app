@@ -6,12 +6,13 @@ const wind = document.querySelector(".wind");
 const precipitation = document.querySelector(".precipitation");
 const min_days_temp = document.querySelectorAll(".min_day");
 const max_days_temp = document.querySelectorAll(".max_day");
-
+const city_country=document.querySelector(".content_city")
 async function getWeather(latitude, longitude) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&hourly=temperature_2m,weather_code&current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code,apparent_temperature&timezone=auto&timeformat=unixtime`;
     try {
         const meta = await fetch(url);
         const data = await meta.json();
+        console.log(data)
         renderWeather(data);
     } catch (error) {
         console.error("Помилка getWeather: "+error);
@@ -42,4 +43,5 @@ function renderWeather(data) {
 document.addEventListener('citySelected', (e) => {
     const cityData = e.detail;
     getWeather(cityData.latitude, cityData.longitude);
+    city_country.innerText=`${cityData.name}, ${cityData.country}`
 });
