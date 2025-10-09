@@ -178,7 +178,8 @@ body{
     justify-content: center;
 }
 .content_info-img{
-    background: url("../images/icon-sunny.webp") no-repeat center ;
+    background-repeat:  no-repeat;
+    background-position:  center;
     background-size: cover;
     width: 120px;
     height: 120px;
@@ -288,58 +289,15 @@ display: grid;
         font-size: 20px;
     }
 
-.content_daily_forecast-grid-monday-img{
-    background:  url("../images/icon-rain.webp") no-repeat center ;
+.content_daily_forecast-grid-img{
+    background-repeat:  no-repeat;
+    background-position:  center;
     background-size: cover;
     height: 60px;
     width: 60px;
     margin: 0 auto;
 }
-.content_daily_forecast-grid-tuesday-img{
-     background:  url("../images/icon-sunny.webp") no-repeat center ;
-    background-size: cover;
-    height: 60px;
-    width: 60px;
-    margin: 0 auto;
 
-}
-.content_daily_forecast-grid-wednesday-img{
-    background:  url("../images/icon-partly-cloudy.webp") no-repeat center ;
-    background-size: cover;
-    height: 60px;
-    width: 60px;
-    margin: 0 auto;
-
-}
-.content_daily_forecast-grid-thursday-img{
-    background:  url("../images/icon-snow.webp") no-repeat center ;
-    background-size: cover;
-    height: 60px;
-    width: 60px;
-    margin: 0 auto;
-
-}
-.content_daily_forecast-grid-friday-img{
- background:  url("../images/icon-rain.webp") no-repeat center ;
-    background-size: cover;
-    height: 60px;
-    width: 60px;
-    margin: 0 auto;
-}
-.content_daily_forecast-grid-saturday-img{
- background:  url("../images/icon-drizzle.webp") no-repeat center ;
-    background-size: cover;
-    height: 60px;
-    width: 60px;
-    margin: 0 auto;
-}
-.content_daily_forecast-grid-sunday-img{
- background:  url("../images/icon-fog.webp") no-repeat center ;
-    background-size: cover;
-    height: 60px;
-    width: 60px;
-    margin: 0 auto;
-}
 .content_daily_forecast-temperature{
     color:  white;
     font-weight: 500;
@@ -377,7 +335,8 @@ display: grid;
 @media (min-width: 1441px){
     .hourly_forecast{
         min-width: 250px;
-        min-height: 700px;
+        /*min-height: 700px;*/
+        max-height: 720px;
         max-width:400px ;
     }
 }
@@ -388,6 +347,9 @@ display: grid;
 }
 .hourly_forecast-body{
     padding-bottom: 1rem;
+    max-height: 640px;
+    overflow-x: hidden;
+scrollbar-width: none;
 }
 .days_form{
     background-color:  var(--neutral-600);
@@ -398,6 +360,7 @@ display: grid;
     border-radius: 12px;
 }
 .hourly_forecast-body-header{
+    min-height: 20px ;
     background-color:  var(--neutral-700);
     display: flex;
     justify-content: space-between;
@@ -413,65 +376,17 @@ display: grid;
     width: 84px;
     align-items: center;
 }
-.pm-3_img{
+
+.pm_img{
     background: url("../images/icon-rain.webp") no-repeat center ;
     background-size:  cover;
     height: 37px;
     width: 37px;
   }
-.pm-4_img{
-    background: url("../images/icon-snow.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
-.pm-5_img{
-    background: url("../images/icon-drizzle.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
-.pm-6_img{
-background: url("../images/icon-rain.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
-.pm-7_img{
-background: url("../images/icon-fog.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
-.pm-8_img{
-background: url("../images/icon-partly-cloudy.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
-.pm-9_img{
-background: url("../images/icon-sunny.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
-.pm-10_img{
-background: url("../images/icon-storm.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
-.pm-11_img{
-background: url("../images/icon-overcast.webp") no-repeat center ;
-    background-size:  cover;
-    height: 37px;
-    width: 37px;
-}
 
 .layout {
   display: flex;
   flex-direction: column;
-/*margin: 0 112px 80px 112px;*/
 }
 
 @media (min-width: 1441px) {
@@ -489,5 +404,6 @@ background: url("../images/icon-overcast.webp") no-repeat center ;
 
   .aside_content {
     flex: 1;
+      max-height: 720px;
   }
 }

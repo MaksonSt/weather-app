@@ -20,6 +20,7 @@ export async function getCity(cityName) {
         console.error("Помилка getCity: "+error);
         return null;
     }
+
 }
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -39,7 +40,7 @@ export async function getCity(cityName) {
 const day_week=document.querySelectorAll(".day")
 const day=new Date()
 
-function setDate(){
+export function setTime(){
     const week_short=["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const week_full=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -50,9 +51,42 @@ function setDate(){
         day.innerText=week_short[nextDay]
     })
 
+const hourlyData = [];
     const dates=document.querySelector(".content_date")
-    const mnth=months[day.getMonth()]
+    const month=months[day.getMonth()]
     const day_week_full=week_full[day.getDay()]
-    dates.innerText=`${day_week_full}, ${mnth} ${day.getDate()}, ${day.getFullYear()}`
+    dates.innerText=`${day_week_full}, ${month} ${day.getDate()}, ${day.getFullYear()}`
+
+const hourly_forecast_div=document.querySelector(".hourly_forecast-body")
+
+        for (let i=0; i <= 24; i++) {
+  const hourBlock = document.createElement("div");
+  hourBlock.classList.add("hourly_forecast-body-header");
+
+  const imgHourDiv = document.createElement("div");
+  imgHourDiv.classList.add("pm_img_hour");
+
+ const imgDiv = document.createElement("div");
+  imgDiv.classList.add("pm_img");
+  imgDiv.style.backgroundImage = "url(../assets/images/icon-sunny.webp)";
+
+  const timeP = document.createElement("p");
+  timeP.textContent = `${i}:00`;
+
+  imgHourDiv.appendChild(imgDiv);
+  imgHourDiv.appendChild(timeP);
+
+  const tempP = document.createElement("p");
+  tempP.textContent = `${Math.round(Math.random() * 10 + 10)}°`;
+
+  hourBlock.appendChild(imgHourDiv);
+  hourBlock.appendChild(tempP);
+
+  hourly_forecast_div.appendChild(hourBlock);
+
+  hourlyData.push({ hour: `${i}:00`, tempP, imgDiv });
+    }
+        return hourlyData;
 }
-setDate();
+
+
