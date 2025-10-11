@@ -195,6 +195,25 @@ text-align: center;
         min-width:120px;
     }
 }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader-icon{
+    width: 60px;
+    height: 60px;
+}
+.loader-overlay{
+    display: flex;
+    justify-content:  center;
+    text-align: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
 .content_main{
     background: url("../images/bg-today-small.svg") no-repeat center;
     height: 290px;

@@ -16,6 +16,9 @@ const error_api=document.querySelector(".error_api")
 const hidden_layout=document.querySelector(".layout");
 const content_form=document.querySelector(".content_form");
 const error_api_btn=document.querySelector(".error_api_btn");
+const loader=document.querySelector("#loader-overlay");
+const content_city_date=document.querySelector(".content_city_date");
+const content_info=document.querySelector(".content_info");
 
 const weatherIcons = {
   0: "../assets/images/icon-loading.svg",
@@ -53,18 +56,24 @@ async function getWeather(latitude, longitude) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&hourly=temperature_2m,weather_code&current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code,apparent_temperature&timezone=auto&timeformat=unixtime`;
     lastLatitude = latitude;
     lastLongitude = longitude;
-
+    loader.classList.remove("hidden");
+    content_city_date.classList.add("hidden");
+    content_info.classList.add("hidden");
     try {
         const meta = await fetch(url);
         const data = await meta.json();
         console.log(data)
 
         error_api.classList.add("hidden");
+        loader.classList.add("hidden");
+        content_city_date.classList.remove("hidden");
+        content_info.classList.remove("hidden");
         renderWeather(data);
     } catch (error) {
         content_form.classList.add("hidden");
             hidden_layout.classList.add("hidden");
         error_api.classList.remove("hidden");
+        loader.classList.add("hidden");
         console.error("Помилка getWeather: "+error);
     }
 }
