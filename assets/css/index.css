@@ -4,10 +4,69 @@ input,button,textarea{font-family:inherit;}
 input::-ms-clear{display: none;}
 button{cursor: pointer;}
 button::-moz-focus-inner {padding:0;border:0;}
+
 body{
     color: white;
     background-color: var(--neutral-900);
     font-family: "DMSans";
+}
+.text_preset_2{
+font-weight: 700 ;
+    font-size: 52px;
+}
+.text_preset_5{
+font-size: 20px;
+    line-height: 120%;
+    font-weight:600;
+}
+.hidden {
+    display: none !important;
+}
+.error_found{
+text-align: center;
+    font-weight:  bold;
+    font-size: 28px;
+    padding: 20px;
+}
+.error_api_parent{
+    display: flex;
+    justify-content: center;
+}
+.error_api{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width:200px;
+}
+@media(min-width: 769px){
+    .error_api{
+        max-width:600px;
+    }
+}
+.error_api_p,.error_api_h{
+    text-align: center;
+}
+.error_api_btn{
+    background-color:var(--neutral-700) ;
+    display: flex;
+    justify-content: space-around;
+    min-width: 90px;
+    border-radius: 12px;
+    color:white;
+    padding: 10px;
+}
+.error_api_btn:hover{
+    background-color: var(--neutral-800);
+}
+.error_api_btn:active{
+    background-color: var(--neutral-900);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--neutral-300),
+    0 0 0 2px var(--neutral-600);
+}
+.error_api_img{
+    width:40px;
 }
 .header{
     display: flex;
@@ -48,7 +107,7 @@ body{
 }
 
 .title{
-    max-width: 330px    ;
+    max-width: 330px;
     color: white;
     text-align: center;
     font-family: "Bricolage-Grotesque";
@@ -108,7 +167,6 @@ body{
     font-size: 16px;
 }
 .content_search-btn{
-    font-size: 20px;
     min-height: 56px;
     min-width: 340px;
     border-radius: 12px;
@@ -286,7 +344,6 @@ display: grid;
         text-align: center;
         padding: 1rem;
         font-weight: 500;
-        font-size: 20px;
     }
 
 .content_daily_forecast-grid-img{

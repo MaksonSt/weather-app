@@ -1,6 +1,8 @@
 // спільні функції
 export const form = document.querySelector(".search_city");
-
+const hidden_layout=document.querySelector(".layout");
+const error_found_text=document.querySelector(".error_found");
+error_found_text.classList.add("hidden")
 export async function getCity(cityName) {
     const urlCity = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=en&format=json`;
     try {
@@ -11,9 +13,14 @@ export async function getCity(cityName) {
 
         if (dataPlace.results && dataPlace.results.length > 0) {
             console.log("Координати:", dataPlace.results[0].latitude, dataPlace.results[0].longitude);
+            error_found_text.style.display="block";
+            hidden_layout.classList.remove("hidden");
+            error_found_text.classList.add("hidden")
             return dataPlace.results[0];
         } else {
             console.error("Місто не знайдено");
+            hidden_layout.classList.add("hidden");
+            error_found_text.classList.remove("hidden")
             return null;
         }
     } catch (error) {
