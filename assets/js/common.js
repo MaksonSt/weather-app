@@ -2,9 +2,12 @@
 export const form = document.querySelector(".search_city");
 const hidden_layout=document.querySelector(".layout");
 const error_found_text=document.querySelector(".error_found");
+const search_suggestions=document.querySelector(".search_suggestions");
+const search_input=document.querySelector(".content_search-input");
+
 error_found_text.classList.add("hidden")
 export async function getCity(cityName) {
-    const urlCity = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=en&format=json`;
+    const urlCity = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=5&language=en&format=json`;
     try {
         const memo = await fetch(urlCity);
         const dataPlace = await memo.json();
@@ -29,6 +32,86 @@ export async function getCity(cityName) {
     }
 
 }
+async function getCitySuggestions(cityName) {
+    if (!cityName) return []; // Повертаємо пустий масив, якщо запит порожній
+
+    const urlCity = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=5&language=en&format=json`;
+    try {
+        const memo = await fetch(urlCity);
+        const dataPlace = await memo.json();
+        return dataPlace.results || []; // Повертаємо весь масив або пустий масив
+    } catch (error) {
+        console.error("Помилка getCitySuggestions: " + error);
+        return [];
+    }
+}
+function renderSuggestions(cities) {
+    search_suggestions.innerHTML = '';
+
+    if (cities.length === 0) {
+        search_suggestions.classList.add('hidden');
+        return;
+    }
+
+    cities.forEach(city => {
+        const suggestionItem = document.createElement('div');
+        suggestionItem.className = 'suggestion_city';
+        suggestionItem.innerText = `${city.name},${city.admin2 || ""}, ${city.country}`;
+
+        suggestionItem.dataset.latitude = city.latitude;
+        suggestionItem.dataset.longitude = city.longitude;
+        suggestionItem.dataset.name = city.name;
+        suggestionItem.dataset.admin2 = city.admin2;
+        suggestionItem.dataset.country = city.country;
+
+        suggestionItem.addEventListener('click', handleSuggestionClick);
+
+        search_suggestions.appendChild(suggestionItem);
+    });
+
+    search_suggestions.classList.remove('hidden');
+}
+
+function handleSuggestionClick(event) {
+    const clickedItem = event.currentTarget;
+    const { latitude, longitude, name,admin2, country } = clickedItem.dataset;
+
+    search_input.value = `${name}, ${admin2 || ""}, ${country}`;
+
+    search_suggestions.classList.add('hidden');
+    search_suggestions.innerHTML = '';
+
+    const citySelectedEvent = new CustomEvent('citySelected', {
+        detail: {
+            latitude,
+            longitude,
+            name,
+            admin2,
+            country
+        }
+    });
+    document.dispatchEvent(citySelectedEvent);
+}
+
+let debounceTimer;
+
+search_input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(async () => {
+        const cityName = search_input.value.trim();
+        const cities = await getCitySuggestions(cityName);
+        renderSuggestions(cities);
+    }, 300);
+});
+
+document.addEventListener('click', (event) => {
+    if (!search_input.contains(event.target)) {
+        search_suggestions.classList.add('hidden');
+    }
+});
+
+
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
         const city = form.querySelector("[name='input_city']");

@@ -21,7 +21,7 @@ const content_city_date=document.querySelector(".content_city_date");
 const content_info=document.querySelector(".content_info");
 
 const weatherIcons = {
-  0: "../assets/images/icon-loading.svg",
+  0: "../assets/images/icon-overcast.webp",
   1: "../assets/images/icon-sunny.webp",
   2: "../assets/images/icon-partly-cloudy.webp",
   3: "../assets/images/icon-partly-cloudy.webp",

@@ -21,16 +21,21 @@
     </div>
 
 
+<h1 class="title">How’s the sky looking today?</h1>
 <main class="content_form">
-    <h1 class="title">How’s the sky looking today?</h1>
     <div class="content_search">
         <form class="search_city" autocomplete="off">
-            <input class="content_search-input" type="text" placeholder="Search for a place..." aria-label="Search place" name="input_city">
-        <button class="content_search-btn text_preset_5" type="submit" >Search</button>
+            <div class="search-input-wrapper">
+                <input class="content_search-input" type="text" placeholder="Search for a place..." aria-label="Search place" name="input_city">
+                <div class="search_suggestions hidden"></div>
+            </div>
+            <button class="content_search-btn text_preset_5" type="submit" >Search</button>
         </form>
     </div>
-</main>
+
 <div class="error_found">No search result found!</div>
+</main>
+
   <div class="layout">
 <main class="content">
 
