@@ -4,6 +4,7 @@ const hidden_layout=document.querySelector(".layout");
 const error_found_text=document.querySelector(".error_found");
 const search_suggestions=document.querySelector(".search_suggestions");
 const search_input=document.querySelector(".content_search-input");
+const hourlyForecastContainer = document.querySelector(".hourly_forecast-body");
 
 error_found_text.classList.add("hidden")
 export async function getCity(cityName) {
@@ -33,13 +34,13 @@ export async function getCity(cityName) {
 
 }
 async function getCitySuggestions(cityName) {
-    if (!cityName) return []; // Повертаємо пустий масив, якщо запит порожній
+    if (!cityName) return [];
 
     const urlCity = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=5&language=en&format=json`;
     try {
         const memo = await fetch(urlCity);
         const dataPlace = await memo.json();
-        return dataPlace.results || []; // Повертаємо весь масив або пустий масив
+        return dataPlace.results || [];
     } catch (error) {
         console.error("Помилка getCitySuggestions: " + error);
         return [];
@@ -149,7 +150,7 @@ const hourlyData = [];
 
 const hourly_forecast_div=document.querySelector(".hourly_forecast-body")
 
-        for (let i=0; i <= 24; i++) {
+        for (let i=0; i <= 23; i++) {
   const hourBlock = document.createElement("div");
   hourBlock.classList.add("hourly_forecast-body-header");
 
@@ -177,6 +178,37 @@ const hourly_forecast_div=document.querySelector(".hourly_forecast-body")
   hourlyData.push({ hour: `${i}:00`, tempP, imgDiv });
     }
         return hourlyData;
+}
+
+export default function renderHourlyForecast(dayData) {
+    hourlyForecastContainer.innerHTML = '';
+
+    dayData.hourly.forEach(hour => {
+
+        const hourBlock = document.createElement('div');
+        hourBlock.className = 'hourly_forecast-body-header';
+
+        const imgHourDiv = document.createElement('div');
+        imgHourDiv.className = 'pm_img_hour';
+
+        const imgDiv = document.createElement('div');
+        imgDiv.className = 'pm_img';
+
+        imgDiv.style.backgroundImage = `url(${weatherIcons[hour.weatherCode]})`;
+
+        const timeP = document.createElement('p');
+        timeP.textContent = hour.time;
+
+        const tempP = document.createElement('p');
+        tempP.textContent = `${hour.temp}°`;
+
+        imgHourDiv.appendChild(imgDiv);
+        imgHourDiv.appendChild(timeP);
+        hourBlock.appendChild(imgHourDiv);
+        hourBlock.appendChild(tempP);
+
+        hourlyForecastContainer.appendChild(hourBlock);
+    });
 }
 
 

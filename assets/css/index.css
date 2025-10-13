@@ -457,7 +457,7 @@ scrollbar-width: none;
 }
 .days_form{
     background-color:  var(--neutral-600);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.875em;
     min-width:  60px;
     padding: 8px;

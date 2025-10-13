@@ -2,6 +2,7 @@
 
 import {setTime} from "./common.js"
 
+
 const mainTemperature = document.querySelector(".content_info-temperature");
 const feelsLike = document.querySelector(".feels_like");
 const humidity = document.querySelector(".humidity");
@@ -19,6 +20,8 @@ const error_api_btn=document.querySelector(".error_api_btn");
 const loader=document.querySelector("#loader-overlay");
 const content_city_date=document.querySelector(".content_city_date");
 const content_info=document.querySelector(".content_info");
+const daySelector = document.querySelector(".days_form");
+const hourlyForecastContainer = document.querySelector(".hourly_forecast-body");
 
 const weatherIcons = {
   0: "../assets/images/icon-overcast.webp",
@@ -63,6 +66,15 @@ async function getWeather(latitude, longitude) {
         const meta = await fetch(url);
         const data = await meta.json();
         console.log(data)
+        processApiData(data);
+
+        renderWeather(data);
+
+        populateDaySelector();
+
+        if (processedForecastData.length > 0) {
+            renderHourlyForecast(processedForecastData[0]);
+        }
 
         error_api.classList.add("hidden");
         loader.classList.add("hidden");
@@ -121,6 +133,94 @@ function renderWeather(data) {
     }
    main_icon.style.backgroundImage = `url(${weatherIcons[data.current.weather_code]})`;
 }
+
+let processedForecastData =[];
+
+function processApiData(apiData) {
+    const hourlyTime = apiData.hourly.time;
+    const hourlyTemp = apiData.hourly.temperature_2m;
+    const hourlyWeatherCode = apiData.hourly.weather_code;
+
+    const allDays = [];
+    let currentDayData = [];
+
+    for (let i = 0; i < hourlyTime.length; i++) {
+        const date = new Date(hourlyTime[i] * 1000);
+        const hourData = {
+            time: `${date.getHours()}:00`,
+            temp: Math.round(hourlyTemp[i]),
+            weatherCode: hourlyWeatherCode[i]
+        };
+
+        currentDayData.push(hourData);
+
+        if (date.getHours() === 23 || i === hourlyTime.length - 1) {
+            allDays.push({
+                dateString: date.toLocaleDateString('uk-UA', { weekday: 'long', month: 'long', day: 'numeric' }),
+                hourly: currentDayData
+            });
+            currentDayData = [];
+        }
+    }
+    processedForecastData = allDays;
+    console.log("Оброблений прогноз:", processedForecastData);
+}
+
+function populateDaySelector() {
+    daySelector.innerHTML = '';
+
+    processedForecastData.forEach((dayData, index) => {
+        const option = document.createElement('option');
+
+        option.textContent = dayData.dateString;
+
+        option.style.fontWeight = 'bold';
+
+        option.value = index;
+
+        daySelector.appendChild(option);
+    });
+}
+
+function renderHourlyForecast(dayData) {
+    hourlyForecastContainer.innerHTML = '';
+
+    dayData.hourly.forEach(hour => {
+
+        const hourBlock = document.createElement('div');
+        hourBlock.className = 'hourly_forecast-body-header';
+
+        const imgHourDiv = document.createElement('div');
+        imgHourDiv.className = 'pm_img_hour';
+
+        const imgDiv = document.createElement('div');
+        imgDiv.className = 'pm_img';
+
+        imgDiv.style.backgroundImage = `url(${weatherIcons[hour.weatherCode]})`;
+
+        const timeP = document.createElement('p');
+        timeP.textContent = hour.time;
+
+        const tempP = document.createElement('p');
+        tempP.textContent = `${hour.temp}°`;
+
+        imgHourDiv.appendChild(imgDiv);
+        imgHourDiv.appendChild(timeP);
+        hourBlock.appendChild(imgHourDiv);
+        hourBlock.appendChild(tempP);
+
+        hourlyForecastContainer.appendChild(hourBlock);
+    });
+}
+
+daySelector.addEventListener('change', (event) => {
+    const selectedDayIndex = event.target.value;
+
+    const selectedDayData = processedForecastData[selectedDayIndex];
+
+    renderHourlyForecast(selectedDayData);
+});
+
 
 
 
