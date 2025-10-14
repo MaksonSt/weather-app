@@ -4,11 +4,11 @@ A modern and responsive web application that provides real-time weather forecast
 
 **[➡️ Live Demo](https://maksonst.github.io/weather-app/)**
 
-![Weather App Screenshot](assets/images/Desktop_Weather-app screen.png) 
+![Weather App Screenshot](assets/images/Desktop_Weather-app_screen.png) 
 ---
-![Weather App Screenshot](assets/images/Tablet_Weather-app screen.png) 
+![Weather App Screenshot](assets/images/Tablet_Weather-app_screen.png) 
 ---
-![Weather App Screenshot](assets/images/Phone_Weather-app screen.png) 
+![Weather App Screenshot](assets/images/Phone_Weather-app_screen.png) 
 ---
 
 ### 🎯 Project Purpose
