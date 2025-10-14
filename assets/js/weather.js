@@ -2,7 +2,7 @@
 
 import {setTime} from "./common.js"
 
-
+const title=document.querySelector(".title");
 const mainTemperature = document.querySelector(".content_info-temperature");
 const feelsLike = document.querySelector(".feels_like");
 const humidity = document.querySelector(".humidity");
@@ -24,29 +24,29 @@ const daySelector = document.querySelector(".days_form");
 const hourlyForecastContainer = document.querySelector(".hourly_forecast-body");
 
 const weatherIcons = {
-  0: "../assets/images/icon-overcast.webp",
-  1: "../assets/images/icon-sunny.webp",
-  2: "../assets/images/icon-partly-cloudy.webp",
-  3: "../assets/images/icon-partly-cloudy.webp",
-  45: "../assets/images/icon-fog.webp",
-  48: "../assets/images/icon-fog.webp",
-  51: "../assets/images/icon-drizzle.webp",
-  53: "../assets/images/icon-drizzle.webp",
-  55: "../assets/images/icon-drizzle.webp",
-  61: "../assets/images/icon-rain.webp",
-  63: "../assets/images/icon-rain.webp",
-  65: "../assets/images/icon-rain.webp",
-  71: "../assets/images/icon-snow.webp",
-  73: "../assets/images/icon-snow.webp",
-  75: "../assets/images/icon-snow.webp",
-  80: "../assets/images/icon-rain.webp",
-  81: "../assets/images/icon-rain.webp",
-  82: "../assets/images/icon-rain.webp",
-  85: "../assets/images/icon-snow.webp",
-  86: "../assets/images/icon-snow.webp",
-  95: "../assets/images/icon-storm.webp",
-  96: "../assets/images/icon-storm.webp",
-  99: "../assets/images/icon-storm.webp"
+  0: "/weather-app/assets/images/icon-overcast.webp",
+  1: "/weather-app/assets/images/icon-sunny.webp",
+  2: "/weather-app/assets/images/icon-partly-cloudy.webp",
+  3: "/weather-app/assets/images/icon-partly-cloudy.webp",
+  45: "/weather-app/assets/images/icon-fog.webp",
+  48: "/weather-app/assets/images/icon-fog.webp",
+  51: "/weather-app/assets/images/icon-drizzle.webp",
+  53: "/weather-app/assets/images/icon-drizzle.webp",
+  55: "/weather-app/assets/images/icon-drizzle.webp",
+  61: "/weather-app/assets/images/icon-rain.webp",
+  63: "/weather-app/assets/images/icon-rain.webp",
+  65: "/weather-app/assets/images/icon-rain.webp",
+  71: "/weather-app/assets/images/icon-snow.webp",
+  73: "/weather-app/assets/images/icon-snow.webp",
+  75: "/weather-app/assets/images/icon-snow.webp",
+  80: "/weather-app/assets/images/icon-rain.webp",
+  81: "/weather-app/assets/images/icon-rain.webp",
+  82: "/weather-app/assets/images/icon-rain.webp",
+  85: "/weather-app/assets/images/icon-snow.webp",
+  86: "/weather-app/assets/images/icon-snow.webp",
+  95: "/weather-app/assets/images/icon-storm.webp",
+  96: "/weather-app/assets/images/icon-storm.webp",
+  99: "/weather-app/assets/images/icon-storm.webp"
 };
 
 
@@ -101,6 +101,7 @@ async function getWeather(latitude, longitude) {
             hidden_layout.classList.add("hidden");
         error_api.classList.remove("hidden");
         loader.classList.add("hidden");
+        title.classList.add("hidden");
         console.error("Помилка getWeather: "+error);
     }
 }
@@ -112,6 +113,8 @@ function loadLastLocation(){
         const savedLocation=JSON.parse(savedLocationJSON);
 
         currentCity={name:savedLocation.name, country:savedLocation.country}
+
+        city_country.innerText = `${savedLocation.name}, ${savedLocation.country}`;
 
         getWeather(savedLocation.lat, savedLocation.lon);
     }

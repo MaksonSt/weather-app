@@ -80,7 +80,7 @@ text-align: center;
 .header_logo{
     height: 24px;
     width: 120px;
-    background-image: url("../images/logo.svg") ;
+    background-image: url("/weather-app/assets/images/logo.svg") ;
     background-repeat:  no-repeat;
     background-size: cover;
 
@@ -140,7 +140,7 @@ text-align: center;
     content: "";
     display: flex;
     position:  absolute;
-    background-image: url("../images/icon-checkmark.svg");
+    background-image: url("/weather-app/assets/images/icon-checkmark.svg");
     background-repeat:no-repeat;
     min-width: 14px;
     min-height: 17px;
@@ -211,7 +211,7 @@ text-align: center;
     padding: 16px 0 16px 60px;
     color: var(--neutral-200);
     background-color: var(--neutral-800);
-    background-image: url("../images/icon-search.svg");
+    background-image: url("/weather-app/assets/images/icon-search.svg");
     background-repeat: no-repeat;
     background-position:  16px center;
 }
@@ -298,14 +298,14 @@ position: absolute;
     margin: 0 auto;
 }
 .content_main{
-    background: url("../images/bg-today-small.svg") no-repeat center;
+    background: url("/weather-app/assets/images/bg-today-small.svg") no-repeat center;
     height: 290px;
     margin: 60px auto 0 auto;
     max-width: 762px;
 }
 @media (min-width: 769px){
     .content_main{
-        background: url("../images/bg-today-large.svg") no-repeat center;
+        background: url("/weather-app/assets/images/bg-today-large.svg") no-repeat center;
         max-height: 300px;
         max-width: 762px;
         margin-top: 0;
@@ -537,7 +537,7 @@ scrollbar-width: none;
 }
 
 .pm_img{
-    background: url("../images/icon-rain.webp") no-repeat center ;
+    background: url("/weather-app/assets/images/icon-rain.webp") no-repeat center ;
     background-size:  cover;
     height: 37px;
     width: 37px;

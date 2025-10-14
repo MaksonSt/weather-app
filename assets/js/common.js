@@ -57,12 +57,11 @@ function renderSuggestions(cities) {
     cities.forEach(city => {
         const suggestionItem = document.createElement('div');
         suggestionItem.className = 'suggestion_city';
-        suggestionItem.innerText = `${city.name},${city.admin2 || ""}, ${city.country}`;
+        suggestionItem.innerText = `${city.name}, ${city.country}`;
 
         suggestionItem.dataset.latitude = city.latitude;
         suggestionItem.dataset.longitude = city.longitude;
         suggestionItem.dataset.name = city.name;
-        suggestionItem.dataset.admin2 = city.admin2;
         suggestionItem.dataset.country = city.country;
 
         suggestionItem.addEventListener('click', handleSuggestionClick);
@@ -75,9 +74,9 @@ function renderSuggestions(cities) {
 
 function handleSuggestionClick(event) {
     const clickedItem = event.currentTarget;
-    const { latitude, longitude, name,admin2, country } = clickedItem.dataset;
+    const { latitude, longitude, name, country } = clickedItem.dataset;
 
-    search_input.value = `${name}, ${admin2 || ""}, ${country}`;
+    search_input.value = `${name},  ${country}`;
 
     search_suggestions.classList.add('hidden');
     search_suggestions.innerHTML = '';
@@ -87,7 +86,6 @@ function handleSuggestionClick(event) {
             latitude,
             longitude,
             name,
-            admin2,
             country
         }
     });
@@ -159,7 +157,7 @@ const hourly_forecast_div=document.querySelector(".hourly_forecast-body")
 
  const imgDiv = document.createElement("div");
   imgDiv.classList.add("pm_img");
-  imgDiv.style.backgroundImage = "url(../assets/images/icon-sunny.webp)";
+  imgDiv.style.backgroundImage = "url(/weather-app/assets/images/icon-sunny.webp)";
 
   const timeP = document.createElement("p");
   timeP.textContent = `${i}:00`;
