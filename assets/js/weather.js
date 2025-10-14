@@ -49,10 +49,14 @@ const weatherIcons = {
   99: "../assets/images/icon-storm.webp"
 };
 
+
+
+
 const hourlyBlocks = setTime();
 
 let lastLatitude;
 let lastLongitude;
+let currentCity = {};
 
 error_api.classList.add("hidden");
 async function getWeather(latitude, longitude) {
@@ -66,6 +70,14 @@ async function getWeather(latitude, longitude) {
         const meta = await fetch(url);
         const data = await meta.json();
         currentWeatherData = data;
+
+        const locationToSave = {
+            lat: latitude,
+            lon: longitude,
+            name: currentCity.name,
+            country: currentCity.country
+        };
+        localStorage.setItem("lastLocation", JSON.stringify(locationToSave));
         console.log(data)
         processApiData(data);
 
@@ -93,6 +105,19 @@ async function getWeather(latitude, longitude) {
     }
 }
 
+
+function loadLastLocation(){
+    const savedLocationJSON=localStorage.getItem("lastLocation");
+    if(savedLocationJSON){
+        const savedLocation=JSON.parse(savedLocationJSON);
+
+        currentCity={name:savedLocation.name, country:savedLocation.country}
+
+        getWeather(savedLocation.lat, savedLocation.lon);
+    }
+}
+
+loadLastLocation();
 error_api_btn.addEventListener("click",async ()=>{
     if (lastLatitude && lastLongitude) {
         await getWeather(lastLatitude, lastLongitude);
@@ -159,7 +184,7 @@ function processApiData(apiData) {
 
         if (date.getHours() === 23 || i === hourlyTime.length - 1) {
             allDays.push({
-                dateString: date.toLocaleDateString('uk-UA', { weekday: 'long', month: 'long', day: 'numeric' }),
+                dateString: date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }),
                 hourly: currentDayData
             });
             currentDayData = [];
@@ -237,6 +262,10 @@ daySelector.addEventListener('change', (event) => {
 
 document.addEventListener('citySelected', (e) => {
     const cityData = e.detail;
+     currentCity = {
+        name: cityData.name,
+        country: cityData.country
+    };
     getWeather(cityData.latitude, cityData.longitude);
     city_country.innerText=`${cityData.name}, ${cityData.country}`
 

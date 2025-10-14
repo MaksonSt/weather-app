@@ -180,33 +180,3 @@ const hourly_forecast_div=document.querySelector(".hourly_forecast-body")
         return hourlyData;
 }
 
-export default function renderHourlyForecast(dayData) {
-    hourlyForecastContainer.innerHTML = '';
-
-    dayData.hourly.forEach(hour => {
-
-        const hourBlock = document.createElement('div');
-        hourBlock.className = 'hourly_forecast-body-header';
-
-        const imgHourDiv = document.createElement('div');
-        imgHourDiv.className = 'pm_img_hour';
-
-        const imgDiv = document.createElement('div');
-        imgDiv.className = 'pm_img';
-
-        imgDiv.style.backgroundImage = `url(${weatherIcons[hour.weatherCode]})`;
-
-        const timeP = document.createElement('p');
-        timeP.textContent = hour.time;
-
-        const tempP = document.createElement('p');
-        tempP.textContent = `${hour.temp}°`;
-
-        imgHourDiv.appendChild(imgDiv);
-        imgHourDiv.appendChild(timeP);
-        hourBlock.appendChild(imgHourDiv);
-        hourBlock.appendChild(tempP);
-
-        hourlyForecastContainer.appendChild(hourBlock);
-    });
-}
