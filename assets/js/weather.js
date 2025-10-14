@@ -65,12 +65,15 @@ async function getWeather(latitude, longitude) {
     try {
         const meta = await fetch(url);
         const data = await meta.json();
+        currentWeatherData = data;
         console.log(data)
         processApiData(data);
 
         renderWeather(data);
 
         populateDaySelector();
+
+        updateUIDisplay();
 
         if (processedForecastData.length > 0) {
             renderHourlyForecast(processedForecastData[0]);
@@ -204,6 +207,14 @@ function renderHourlyForecast(dayData) {
         const tempP = document.createElement('p');
         tempP.textContent = `${hour.temp}°`;
 
+                let temp = hour.temp;
+        if (currentUnits.temperature === 'fahrenheit') {
+            temp = (temp * 9/5) + 32;
+        }
+        tempP.textContent = `${Math.round(temp)}°`;
+
+
+
         imgHourDiv.appendChild(imgDiv);
         imgHourDiv.appendChild(timeP);
         hourBlock.appendChild(imgHourDiv);
@@ -229,4 +240,154 @@ document.addEventListener('citySelected', (e) => {
     getWeather(cityData.latitude, cityData.longitude);
     city_country.innerText=`${cityData.name}, ${cityData.country}`
 
+});
+
+let currentUnits={
+    temperature:"celsius",
+    wind: 'kmh',
+    precipitation: 'mm'
+}
+
+let currentWeatherData = null;
+
+const buttonUnits=document.querySelector('.header_units')
+const unitsBlock=document.querySelector('.units_block')
+const units=document.querySelector('.units')
+buttonUnits.addEventListener('click', ()=>{
+    unitsBlock.classList.toggle('hidden');
+})
+
+document.addEventListener('click', (e)=>{
+    if(!units.contains(e.target)) {
+        unitsBlock.classList.add('hidden');
+    }
+})
+
+unitsBlock.addEventListener('click', (event) => {
+
+    const clickedOption = event.target.closest('.unit-option');
+    if (!clickedOption) return;
+
+    const unitType = clickedOption.dataset.unitType;
+    const unitValue = clickedOption.dataset.unitValue;
+
+    currentUnits[unitType] = unitValue;
+    console.log('Нові одиниці:', currentUnits);
+
+    const optionsInGroup = clickedOption.parentElement.querySelectorAll('.unit-option');
+    optionsInGroup.forEach(option => option.classList.remove('active'));
+
+    clickedOption.classList.add('active');
+
+    updateUIDisplay();
+});
+
+function updateUIDisplay() {
+
+    if (!currentWeatherData) {
+        console.log("Дані про погоду ще не завантажені.");
+        return;
+    }
+
+    let temp = currentWeatherData.current.temperature_2m;
+    let feels = currentWeatherData.current.apparent_temperature;
+
+    if (currentUnits.temperature === 'fahrenheit') {
+        temp = (temp * 9/5) + 32;
+        feels = (feels * 9/5) + 32;
+    }
+
+    mainTemperature.innerText = `${Math.round(temp)}°`;
+    feelsLike.innerText = `${Math.round(feels)}°`;
+
+    mainTemperature.innerText = `${Math.round(temp)}°`;
+
+currentWeatherData.daily.temperature_2m_min.forEach((tempC, i) => {
+    let temp = tempC;
+    if (currentUnits.temperature === 'fahrenheit') {
+        temp = (temp * 9/5) + 32;
+    }
+    if (min_days_temp[i]) {
+        min_days_temp[i].innerText = `${Math.round(temp)}°`;
+    }
+});
+
+currentWeatherData.daily.temperature_2m_max.forEach((tempC, i) => {
+    let temp = tempC;
+    if (currentUnits.temperature === 'fahrenheit') {
+        temp = (temp * 9/5) + 32;
+    }
+    if (max_days_temp[i]) {
+        max_days_temp[i].innerText = `${Math.round(temp)}°`;
+    }
+});
+
+let currentlyDisplayedDayIndex = 0;
+
+daySelector.addEventListener('change', (event) => {
+    const selectedDayIndex = event.target.value;
+    currentlyDisplayedDayIndex = selectedDayIndex;
+
+    const selectedDayData = processedForecastData[selectedDayIndex];
+    renderHourlyForecast(selectedDayData);
+});
+
+if (processedForecastData.length > 0) {
+    renderHourlyForecast(processedForecastData[currentlyDisplayedDayIndex]);
+}
+
+    let windSpeed = currentWeatherData.current.wind_speed_10m;
+    let windUnit = 'km/h';
+    if (currentUnits.wind === 'mph') {
+        windSpeed = windSpeed / 1.609;
+        windUnit = 'mph';
+    }
+    wind.innerText = `${windSpeed.toFixed(1)} ${windUnit}`;
+
+    let precipitationValue = currentWeatherData.daily.precipitation_sum[0];
+    let precipUnit = 'mm';
+    if (currentUnits.precipitation === 'in') {
+        precipitationValue = precipitationValue / 25.4;
+        precipUnit = 'in';
+    }
+    precipitation.innerText = `${precipitationValue.toFixed(1)} ${precipUnit}`;
+
+}
+const switchButton = document.querySelector('.units_button-switch');
+
+function updateActiveButtons() {
+    const allOptions = document.querySelectorAll('.unit-option');
+
+    allOptions.forEach(option => {
+        const unitType = option.dataset.unitType;
+        const unitValue = option.dataset.unitValue;
+
+        if (currentUnits[unitType] === unitValue) {
+            option.classList.add('active');
+        } else {
+            option.classList.remove('active');
+        }
+    });
+}
+
+switchButton.addEventListener('click', () => {
+    const isCurrentlyMetric = currentUnits.temperature === 'celsius';
+
+    if (isCurrentlyMetric) {
+        currentUnits.temperature = 'fahrenheit';
+        currentUnits.wind = 'mph';
+        currentUnits.precipitation = 'in';
+
+        switchButton.innerText = 'Switch to Metric';
+    } else {
+        currentUnits.temperature = 'celsius';
+        currentUnits.wind = 'kmh';
+        currentUnits.precipitation = 'mm';
+
+        switchButton.innerText = 'Switch to Imperial';
+    }
+
+    updateActiveButtons();
+
+    updateUIDisplay();
 });

@@ -94,18 +94,73 @@ text-align: center;
 .header_units{
     display: flex;
     align-items: center;
-    justify-content: center;
-    min-width: 90px;
-    min-height: 33px;
+    justify-content: space-around;
+    cursor: pointer;
+    min-width: 110px;
+    min-height: 40px;
     font-size: 18px;
     border-radius: 12px;
     color:white;
-    background-image:  url("../images/icon-units.svg");
-    background-position: 8px center;
-    background-repeat:no-repeat;
     background-color:var(--neutral-700) ;
 }
-
+.units_block{
+    top: 100%;
+    right: 0;
+    background-color: var(--neutral-800);
+    position: absolute;
+    width: 215px;
+    height: 406px;
+    border-radius: 12px;
+    padding: 8px;
+    border: 2px solid var(--neutral-600);
+    cursor: pointer;
+}
+.units_p{
+    color: var(--neutral-300);
+    font-size: 1em;
+    padding: 0 6px;
+}
+.units_hr{
+   border-width: 0;
+    height: 1px;
+    background-color: var(--neutral-600);
+}
+.active{
+    background-color:  var(--neutral-700);
+}
+.unit-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    padding: 6px;
+    border-radius: 12px;
+}
+.active::after{
+    content: "";
+    display: flex;
+    position:  absolute;
+    background-image: url("../images/icon-checkmark.svg");
+    background-repeat:no-repeat;
+    min-width: 14px;
+    min-height: 17px;
+    right: 16px;
+}
+.unit-option:not(.active):hover {
+    background-color: var(--neutral-600);
+}
+.units_button-switch{
+    display: inline-block;
+    width: 95%;
+    padding: 6px;
+    border-radius:  12px;
+}
+.units_button-switch:hover{
+    background-color:  var(--neutral-700);
+}
+.units{
+    position: relative;
+}
 .title{
     max-width: 330px;
     color: white;

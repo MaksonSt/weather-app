@@ -7,10 +7,42 @@
     <link rel="stylesheet" href="../assets/css/base.css">
 </head>
 <body>
+
 <header class="header">
     <div class="header_logo"></div>
-    <div class="header_units">Units</div>
+    <div class="units">
+        <div class="header_units">
+            <img src="../assets/images/icon-units.svg" alt="icon-dropdown"> Units
+            <img src="../assets/images/icon-dropdown.svg" alt="icon-dropdown">
+        </div>
+        <div class="units_block hidden">
+            <button class="units_button-switch">Switch to Imperial</button>
+
+            <div class="units-group">
+                <p class="units_p">Temperature</p>
+                <button data-unit-type="temperature" data-unit-value="celsius" class="unit-option active">Celsius (°C)</button>
+                <button data-unit-type="temperature" data-unit-value="fahrenheit" class="unit-option">Fahrenheit (°F)</button>
+            </div>
+
+            <hr class="units_hr">
+
+            <div class="units-group">
+                <p class="units_p">Wind Speed</p>
+                <button data-unit-type="wind" data-unit-value="kmh" class="unit-option active">km/h</button>
+                <button data-unit-type="wind" data-unit-value="mph" class="unit-option">mph</button>
+            </div>
+
+            <hr class="units_hr">
+
+            <div class="units-group">
+                <p class="units_p">Precipitation</p>
+                <button data-unit-type="precipitation" data-unit-value="mm" class="unit-option active">Millimeters (mm)</button>
+                <button data-unit-type="precipitation" data-unit-value="in" class="unit-option">Inches (in)</button>
+            </div>
+        </div>
+    </div>
 </header>
+
 <div class="error_api_parent">
 <div class="error_api">
     <img src="../assets/images/icon-error.svg" alt="Error with API" class="error_api_img">

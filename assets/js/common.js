@@ -210,5 +210,3 @@ export default function renderHourlyForecast(dayData) {
         hourlyForecastContainer.appendChild(hourBlock);
     });
 }
-
-
