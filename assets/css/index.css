@@ -114,6 +114,7 @@ text-align: center;
     padding: 8px;
     border: 2px solid var(--neutral-600);
     cursor: pointer;
+    z-index: 100;
 }
 .units_p{
     color: var(--neutral-300);
