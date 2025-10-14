@@ -4,7 +4,11 @@ A modern and responsive web application that provides real-time weather forecast
 
 **[➡️ Live Demo](https://maksonst.github.io/weather-app/)**
 
-![Weather App Screenshot](assets/images/screenshot.png) 
+![Weather App Screenshot](assets/images/Desktop_Weather-app screen.png) 
+---
+![Weather App Screenshot](assets/images/Tablet_Weather-app screen.png) 
+---
+![Weather App Screenshot](assets/images/Phone_Weather-app screen.png) 
 ---
 
 ### 🎯 Project Purpose
@@ -70,3 +74,5 @@ To run this project on your local machine, follow these simple steps:
     cd weather-app
     ```
 3.  Open the `index.html` file in your favorite web browser.
+
+
